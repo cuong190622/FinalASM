@@ -1,0 +1,105 @@
+﻿@model FinalASM.Models.TrainerEntity
+@{
+    ViewBag.Title = "UpdateTrainer";
+}
+
+<div class="mt-2 ml-6 mr-6">
+    <h1 style="font-size: 55px; font-weight: 300;">Update Trainer</h1>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        @Html.ValidationSummary(false, "Error Summary", new { @class = "text-danger" })
+    }
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Username,
+              htmlAttributes: new { @class = "font-weight-bold" })
+
+            @Html.EditorFor(m => m.Username,
+             new
+             {
+               htmlAttributes = new { @class = "form-control" }
+             })
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password,
+              htmlAttributes: new { @class = "font-weight-bold" })
+
+            @Html.EditorFor(m => m.Password,
+             new
+             {
+               htmlAttributes = new { @class = "form-control" }
+             })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name,
+              htmlAttributes: new { @class = "font-weight-bold" })
+
+            @Html.EditorFor(m => m.Name,
+             new
+             {
+               htmlAttributes = new { @class = "form-control" }
+             })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Type, new { @class = "font-weight-bold" })
+            @Html.EditorFor(m => m.Type,
+            new
+            {
+              htmlAttributes = new { @class = "form-control" }
+            })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Education, new { @class = "font-weight-bold" })
+            @Html.EditorFor(m => m.Education,
+            new
+            {
+              htmlAttributes = new { @class = "form-control" }
+            })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.WorkingPlace, new { @class = "font-weight-bold" })
+            @Html.EditorFor(m => m.WorkingPlace,
+            new
+            {
+              htmlAttributes = new { @class = "form-control" }
+            })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Telephone, new { @class = "font-weight-bold" })
+            @Html.EditorFor(m => m.Telephone,
+            new
+            {
+              htmlAttributes = new { @class = "form-control" }
+            })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "font-weight-bold" })
+            @Html.EditorFor(m => m.Email,
+            new
+            {
+              htmlAttributes = new { @class = "form-control" }
+            })
+        </div>
+
+
+        <button type="submit" class="btn btn-dark">Update</button>
+    }
+</div>
+

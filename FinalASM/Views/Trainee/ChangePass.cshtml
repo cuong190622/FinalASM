@@ -1,0 +1,75 @@
+﻿@model FinalASM.Models.TraineeEntity
+@{
+    ViewBag.Title = "ChangePass";
+    Layout = "~/Views/Trainee/_LayoutPageForTrainee.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "ChangePass";
+    Layout = "~/Views/Trainee/_LayoutPageForTrainee.cshtml";
+}
+<table class="table table-hover" style="width:30%;margin-left:30px;float:left">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Id)</th>
+            <th scope="row">@Html.DisplayFor(model => model.Id)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Experience)</th>
+            <td>@Html.DisplayFor(model => model.Experience)</td>
+        </tr>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Education)</th>
+            <td>@Html.DisplayFor(model => model.Education)</td>
+        </tr>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Department)</th>
+            <td>@Html.DisplayFor(model => model.Department)</td>
+        </tr>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Age)</th>
+            <td>@Html.DisplayFor(model => model.Age)</td>
+        </tr>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.DoB)</th>
+            <td>@Html.DisplayFor(model => model.DoB)</td>
+        </tr>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Toeic)</th>
+            <td>@Html.DisplayFor(model => model.Toeic)</td>
+        </tr>
+    </tbody>
+</table>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Username)
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Name)
+    @Html.HiddenFor(m => m.Role)
+    @Html.HiddenFor(m => m.Age)
+    @Html.HiddenFor(m => m.DoB)
+    @Html.HiddenFor(m => m.Department)
+    @Html.HiddenFor(m => m.Education)
+    @Html.HiddenFor(m => m.Experience)
+    @Html.HiddenFor(m => m.CourseAssignId)
+    @Html.HiddenFor(m => m.listCourse)
+    @Html.HiddenFor(m => m.Location)
+    @Html.HiddenFor(m => m.ProgrammingLanguage)
+    @Html.HiddenFor(m => m.Toeic)
+    <div style="float:left;margin-left:100px;margin-top:70px">
+        <div class="form-group">
+            <label>Change Password</label>
+            @Html.PasswordFor(o => o.Password, new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}
+

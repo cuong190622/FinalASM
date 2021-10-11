@@ -1,0 +1,42 @@
+﻿@model FinalASM.Models.TrainerEntity
+
+@{
+    Layout = "~/Views/ASM/_LayoutForAdmin.cshtml";
+    ViewBag.Title = "Admin";
+}
+
+@Html.Partial("_PartialPageUserInfo")
+<div class="body">
+    <div class="grid-view" style="height: 700px;">
+        <div class="form-input">
+            <h1 class="title" style="width: 55%; padding: 3%;">Add Trainer</h1>
+            @using (Html.BeginForm(FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username, htmlAttributes: new { @class = "font-weight-bold" })
+
+                    @Html.EditorFor(m => m.Username,
+                     new
+                     {
+                       htmlAttributes = new { @class = "form-control" }
+                     })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "font-weight-bold" })
+                    @Html.EditorFor(m => m.Password,
+                    new
+                    {
+                      htmlAttributes = new { @class = "form-control" }
+                    })
+                </div>
+                <button type="submit" class="btn btn-success">Save</button>
+            }
+        </div>
+        <div class="message">
+
+        </div>
+    </div>
+</div>
+
+
