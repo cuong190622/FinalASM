@@ -1,0 +1,120 @@
+﻿@model IEnumerable<FinalASM.Models.TraineeEntity>
+
+@{
+    ViewBag.Title = "TraineeManager";
+}
+
+<div class="mt-2 ml-6 mr-6">
+    <h1 class="text-center" style="font-size: 55px; font-weight: 300;">Trainer </h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Education)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Age)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.DoB)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ProgrammingLanguage)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Toeic)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Experience)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Department)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Location)</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(model => b.Name)</td>
+                <td>@Html.DisplayFor(model => b.Education)</td>
+                <td>@Html.DisplayFor(model => b.Age)</td>
+                <td>@Html.DisplayFor(model => b.DoB)</td>
+                <td>@Html.DisplayFor(model => b.ProgrammingLanguage)</td>
+                <td>@Html.DisplayFor(model => b.Toeic)</td>
+                <td>@Html.DisplayFor(model => b.Experience)</td>
+                <td>@Html.DisplayFor(model => b.Department)</td>
+                <td>@Html.DisplayFor(model => b.Location)</td>
+                <td><a href="@Url.Action("UpdateTrainee", new {id = b.Id })" type="button" class="btn btn-success">Edit</a></td>
+
+                <td>
+                    <a type="button"
+                       data-Trainer="@String.Format("{0}|{1}",
+                       b.ToSeparatedString("|"),
+                       Url.Action("Delete", new {id = b.Id }))"
+                       data-toggle="modal" data-target="#Delete" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section alertdialog{
+    <div class="modal fade" tabindex="-1" id="Delete" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Deleting A Trainee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+                <form id="deleteForm" method="post">
+                    <div class="modal-body">
+                        <fieldset disabled>
+                            <input type="hidden" id="id" name="id">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="education">Education</label>
+                                <input type="text" class="form-control" id="education" name="education">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">AGE</label>
+                                <input type="text" class="form-control" id="age" name="age">
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">DoB</label>
+                                <input type="text" class="form-control" id="dob" name="dob">
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="Delete">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script type="text/javascript">
+    $('document').ready(function () {
+      $('a[data-trainer]').on('click', function (evt) {
+        let bData = $(this).attr('data-trainer').split("|");
+        console.log(bData);
+        $('#id').attr('value', bData[0]);
+          $('#name').attr('value', bData[1]);
+          $('#education').attr('value', bData[2]);
+          $('#age').attr('value', bData[3]);
+          $('#dob').attr('value', bData[4]);
+
+        $('#deleteForm').attr('action', bData[5]);
+      });
+    });
+    </script>
+}
+
+

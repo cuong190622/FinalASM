@@ -42,5 +42,17 @@ namespace FinalASM.Models
         public int CourseAssignId { get; set; }
 
         public List<CourseEntity> listCourse { get; set; }
+
+
+        public string ToSeparatedString(string separator)
+        {
+            return $"{this.Id}{separator}" +
+                $"{this.Name}{separator}" +
+                $"{this.Education}{separator}" +
+                $"{this.Age}{separator}" +
+                $"{this.DoB}";
+        }
+
+
     }
 }

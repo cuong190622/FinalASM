@@ -1,4 +1,4 @@
-﻿using FinalASM.Models;
+﻿ using FinalASM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,23 +18,24 @@ namespace FinalASM.Controllers
         [HttpGet]
         public ActionResult ChangePass(int id)
         {
-            using (var abc = new EF.FPTContext())
+            using (var teCtx = new EF.FPTContext())
             {
-                var stix = abc.trainees.FirstOrDefault(b => b.Id == id);
-                return View(stix);
+                var trainee = teCtx.trainees.FirstOrDefault(c => c.Id == id);
+
+                return View(trainee);
             }
         }
-
         [HttpPost]
-        public ActionResult ChangePass(TraineeEntity a)
+        public ActionResult ChangePass(TraineeEntity trainee)
         {
-            using (var abc = new EF.FPTContext())
+            using (var teCtx = new EF.FPTContext())
             {
-                abc.Entry<TraineeEntity>(a).State = System.Data.Entity.EntityState.Modified;
-                abc.SaveChanges();
+                teCtx.Entry<TraineeEntity>(trainee).State = System.Data.Entity.EntityState.Modified;
+                teCtx.SaveChanges();
             }
 
             return RedirectToAction("Index");
         }
+
     }
 }
