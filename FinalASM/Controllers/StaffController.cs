@@ -181,7 +181,7 @@ namespace FinalASM.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("index");
+                    return RedirectToAction("TraineeManager");
                 }
             }
         }
@@ -207,7 +207,7 @@ namespace FinalASM.Controllers
                 }
 
 
-                return RedirectToAction("Index");
+                return RedirectToAction("TraineeManager");
             }
         }
 
